@@ -6,7 +6,7 @@ var y = canvas.height - 30;
 
 var dx = 2;
 var dy = -2;
-var ballRadius = 10;
+var ballRadius = 20;
 var paddleHeight = 10;
 var paddleWidth = 75;
 var paddleX = (canvas.width - paddleWidth) / 2
@@ -68,11 +68,14 @@ function drawLives() {
 }
 
 function drawBall() {
-  ctx.beginPath();
-  ctx.arc(x, y, 10, 0, Math.PI * 2);
-  ctx.fillStyle = '#0095dd';
-  ctx.fill();
-  ctx.closePath();
+  // ctx.beginPath();
+  // ctx.arc(x, y, 10, 10, Math.PI * 2);
+  // ctx.fillStyle = '#0095dd';
+  // ctx.fill();
+  // ctx.closePath();
+  var img = new Image();
+  img.src = 'corona.png';
+  ctx.drawImage(img, x, y, ballRadius, ballRadius);
 };
 
 function drawPaddle() {
@@ -138,7 +141,7 @@ function draw() {
     }
   }
 
-  if(x + dx > canvas.width - ballRadius | x + dx < ballRadius) {
+  if(x + dx > canvas.width - ballRadius || x + dx < 0) {
     dx = -dx;
   };
 
